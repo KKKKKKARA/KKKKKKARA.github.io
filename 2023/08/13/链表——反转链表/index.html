@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="zh_CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic%7CLobster+Two:300,300italic,400,400italic,700,700italic%7CAmita:300,300italic,400,400italic,700,700italic%7CMontserrat:300,300italic,400,400italic,700,700italic%7CPT+Mono:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha256-HtsXJanqjKTc8vVQjO4YMhiqFoXkfBsjBWcX91T1jr8=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.18.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"بحث...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="力扣题目链接： https:&#x2F;&#x2F;leetcode.cn&#x2F;problems&#x2F;reverse-linked-list&#x2F;description&#x2F;   双指针如果新建一个链表反转链表，既浪费空间又浪费时间。我们可以改变结点中next的指向改变链表的方向。只需要将next“指向后方”变成“指向前方”,那么我们就达到了反转链表的目的。 1234567891011121314151617181920212223">
+<meta property="og:type" content="article">
+<meta property="og:title" content="链表——反转链表">
+<meta property="og:url" content="http://example.com/2023/08/13/%E9%93%BE%E8%A1%A8%E2%80%94%E2%80%94%E5%8F%8D%E8%BD%AC%E9%93%BE%E8%A1%A8/index.html">
+<meta property="og:site_name" content="Blog by KKKKKKARA">
+<meta property="og:description" content="力扣题目链接： https:&#x2F;&#x2F;leetcode.cn&#x2F;problems&#x2F;reverse-linked-list&#x2F;description&#x2F;   双指针如果新建一个链表反转链表，既浪费空间又浪费时间。我们可以改变结点中next的指向改变链表的方向。只需要将next“指向后方”变成“指向前方”,那么我们就达到了反转链表的目的。 1234567891011121314151617181920212223">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2023-08-13T12:27:29.000Z">
+<meta property="article:modified_time" content="2023-08-13T13:09:12.806Z">
+<meta property="article:author" content="KKKKKKARA">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://example.com/2023/08/13/%E9%93%BE%E8%A1%A8%E2%80%94%E2%80%94%E5%8F%8D%E8%BD%AC%E9%93%BE%E8%A1%A8/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh_CN","comments":true,"permalink":"http://example.com/2023/08/13/%E9%93%BE%E8%A1%A8%E2%80%94%E2%80%94%E5%8F%8D%E8%BD%AC%E9%93%BE%E8%A1%A8/","path":"2023/08/13/链表——反转链表/","title":"链表——反转链表"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>链表——反转链表 | Blog by KKKKKKARA</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="تشغيل شريط التصفح" role="button">
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Blog by KKKKKKARA</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="بحث" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          المحتويات
+        </li>
+        <li class="sidebar-nav-overview">
+          عام
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8A%9B%E6%89%A3%E9%A2%98%E7%9B%AE%E9%93%BE%E6%8E%A5%EF%BC%9A"><span class="nav-number">1.</span> <span class="nav-text">力扣题目链接：</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%8C%E6%8C%87%E9%92%88"><span class="nav-number">1.1.</span> <span class="nav-text">双指针</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%80%92%E5%BD%92"><span class="nav-number">1.2.</span> <span class="nav-text">递归</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%B4%E6%8F%92%E6%B3%95"><span class="nav-number">1.3.</span> <span class="nav-text">头插法</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="KKKKKKARA"
+      src="/images/apple-touch-icon-next.png">
+  <p class="site-author-name" itemprop="name">KKKKKKARA</p>
+  <div class="site-description" itemprop="description">靡不有初，鲜克有终。</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">10</span>
+          <span class="site-state-item-name">المقالات</span>
+        </a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/KKKKKKARA" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;KKKKKKARA" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:k3500322737@163.com" title="E-Mail → mailto:k3500322737@163.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh_CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/08/13/%E9%93%BE%E8%A1%A8%E2%80%94%E2%80%94%E5%8F%8D%E8%BD%AC%E9%93%BE%E8%A1%A8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/apple-touch-icon-next.png">
+      <meta itemprop="name" content="KKKKKKARA">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Blog by KKKKKKARA">
+      <meta itemprop="description" content="靡不有初，鲜克有终。">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="链表——反转链表 | Blog by KKKKKKARA">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          链表——反转链表
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">نُشر في</span>
+      
+
+      <time title="أُنشأ: 2023-08-13 20:27:29 / عُدل: 21:09:12" itemprop="dateCreated datePublished" datetime="2023-08-13T20:27:29+08:00">2023-08-13</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h1 id="力扣题目链接："><a href="#力扣题目链接：" class="headerlink" title="力扣题目链接："></a>力扣题目链接：</h1><div>
+https://leetcode.cn/problems/reverse-linked-list/description/
+</div>
+
+<h2 id="双指针"><a href="#双指针" class="headerlink" title="双指针"></a>双指针</h2><p>如果新建一个链表反转链表，既浪费空间又浪费时间。我们可以改变结点中next的指向改变链表的方向。只需要将next“指向后方”变成“指向前方”,那么我们就达到了反转链表的目的。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for singly-linked list.</span></span><br><span class="line"><span class="comment"> * struct ListNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     ListNode *next;</span></span><br><span class="line"><span class="comment"> *     ListNode() : val(0), next(nullptr) &#123;&#125;</span></span><br><span class="line"><span class="comment"> *     ListNode(int x) : val(x), next(nullptr) &#123;&#125;</span></span><br><span class="line"><span class="comment"> *     ListNode(int x, ListNode *next) : val(x), next(next) &#123;&#125;</span></span><br><span class="line"><span class="comment"> * &#125;;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="comment">//双指针</span></span><br><span class="line"><span class="comment">//cur指向当前结点，prev作为cur前一个结点，使cur指向ptr，即改变了next方向。</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">ListNode* <span class="title">reverseList</span><span class="params">(ListNode* head)</span> </span>&#123;</span><br><span class="line">        <span class="comment">//cur初始化为头节点，prev初始为空指针</span></span><br><span class="line">        <span class="comment">//反转后头结点变成尾结点，next==NULL，这是合理的，说明初始化正确。</span></span><br><span class="line">        ListNode* cur=head;</span><br><span class="line">        ListNode* prev=<span class="literal">NULL</span>;</span><br><span class="line">        <span class="comment">//当cur为空指针时，说明已经反转完成</span></span><br><span class="line">        <span class="keyword">while</span>(cur)&#123;</span><br><span class="line">            <span class="comment">//用temp记录cur-&gt;next后再反转cur的next方向,否则会丢失后续链表的地址</span></span><br><span class="line">            ListNode* temp=cur-&gt;next;</span><br><span class="line">            <span class="comment">//改变next方向</span></span><br><span class="line">            cur-&gt;next=prev;</span><br><span class="line">            <span class="comment">//先移动prev再移动cur。</span></span><br><span class="line">            <span class="comment">//否则，prev与cur（已移动）中间结点的地址是丢失的，无法移动prev</span></span><br><span class="line">            prev=cur;</span><br><span class="line">            cur=temp;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//cur为空指针时，prev指向反转链表的头结点</span></span><br><span class="line">        <span class="keyword">return</span> prev;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h2 id="递归"><a href="#递归" class="headerlink" title="递归"></a>递归</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//递归</span></span><br><span class="line"><span class="comment">//思路与双指针完全相同，代码可以对照双指针法代码进行实现</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">ListNode* <span class="title">reverse</span><span class="params">(ListNode* prev,ListNode* cur)</span></span>&#123;</span><br><span class="line">        <span class="comment">//cur为空指针时，返回prev</span></span><br><span class="line">        <span class="keyword">if</span>(cur==<span class="literal">NULL</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> prev;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//定义temp；改变next方向</span></span><br><span class="line">        ListNode* temp=cur-&gt;next;</span><br><span class="line">        cur-&gt;next=prev;</span><br><span class="line">        <span class="comment">//这时我们对一处结点的反转已经完成，接下来使用递归，让函数处理下一处结点</span></span><br><span class="line">        <span class="comment">//那么下一处结点的prev为cur，cur为temp</span></span><br><span class="line">        <span class="comment">//我们发现，这其实与双指针法别无二样。</span></span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">reverse</span>(cur,temp);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function">ListNode* <span class="title">reverseList</span><span class="params">(ListNode* head)</span> </span>&#123;</span><br><span class="line">        <span class="comment">//返回reverse函数的返回值</span></span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">reverse</span>(<span class="literal">NULL</span>,head);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h2 id="头插法"><a href="#头插法" class="headerlink" title="头插法"></a>头插法</h2><p>使用虚拟头节点，将链表从头到尾一个一个的查到虚拟头节点的后面。我们发现，最早插入的结点出现在链表的最后，最晚插入的结点出现在链表的开头。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">ListNode* <span class="title">reverseList</span><span class="params">(ListNode* head)</span> </span>&#123;</span><br><span class="line">        ListNode* dummyHead=<span class="keyword">new</span> ListNode;</span><br><span class="line">        dummyHead-&gt;next=<span class="literal">NULL</span>;</span><br><span class="line">        ListNode* cur=head;</span><br><span class="line">        <span class="keyword">while</span>(cur)&#123;</span><br><span class="line">            <span class="comment">//同样的，定义temp</span></span><br><span class="line">            ListNode* temp=cur-&gt;next;</span><br><span class="line">            <span class="comment">//cur插入到虚拟头节点和真实头节点之间</span></span><br><span class="line">            cur-&gt;next=dummyHead-&gt;next;</span><br><span class="line">            dummyHead-&gt;next=cur;</span><br><span class="line">            <span class="comment">//cur后移</span></span><br><span class="line">            cur=temp;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//返回真实的头节点</span></span><br><span class="line">        <span class="keyword">return</span> dummyHead-&gt;next;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2023/08/13/%E9%93%BE%E8%A1%A8%E2%80%94%E2%80%94%E8%AE%BE%E8%AE%A1%E9%93%BE%E8%A1%A8/" rel="prev" title="链表——设计链表">
+                  <i class="fa fa-angle-left"></i> 链表——设计链表
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2023</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">KKKKKKARA</span>
+  </div>
+  <div class="powered-by">تطبيق الموقع <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>
