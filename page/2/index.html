@@ -116,7 +116,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">17</span>
+          <span class="site-state-item-count">20</span>
           <span class="site-state-item-name">المقالات</span>
         </a>
       </div>
@@ -142,6 +142,248 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/08/13/%E9%93%BE%E8%A1%A8%E2%80%94%E2%80%94%E5%8F%8D%E8%BD%AC%E9%93%BE%E8%A1%A8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/apple-touch-icon-next.png">
+      <meta itemprop="name" content="KKKKKKARA">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Blog by KKKKKKARA">
+      <meta itemprop="description" content="靡不有初，鲜克有终。">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Blog by KKKKKKARA">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2023/08/13/%E9%93%BE%E8%A1%A8%E2%80%94%E2%80%94%E5%8F%8D%E8%BD%AC%E9%93%BE%E8%A1%A8/" class="post-title-link" itemprop="url">链表——反转链表</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">نُشر في</span>
+      
+
+      <time title="أُنشأ: 2023-08-13 20:27:29 / عُدل: 21:09:12" itemprop="dateCreated datePublished" datetime="2023-08-13T20:27:29+08:00">2023-08-13</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="力扣题目链接："><a href="#力扣题目链接：" class="headerlink" title="力扣题目链接："></a>力扣题目链接：</h1><div>
+https://leetcode.cn/problems/reverse-linked-list/description/
+</div>
+
+<h2 id="双指针"><a href="#双指针" class="headerlink" title="双指针"></a>双指针</h2><p>如果新建一个链表反转链表，既浪费空间又浪费时间。我们可以改变结点中next的指向改变链表的方向。只需要将next“指向后方”变成“指向前方”,那么我们就达到了反转链表的目的。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for singly-linked list.</span></span><br><span class="line"><span class="comment"> * struct ListNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     ListNode *next;</span></span><br><span class="line"><span class="comment"> *     ListNode() : val(0), next(nullptr) &#123;&#125;</span></span><br><span class="line"><span class="comment"> *     ListNode(int x) : val(x), next(nullptr) &#123;&#125;</span></span><br><span class="line"><span class="comment"> *     ListNode(int x, ListNode *next) : val(x), next(next) &#123;&#125;</span></span><br><span class="line"><span class="comment"> * &#125;;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="comment">//双指针</span></span><br><span class="line"><span class="comment">//cur指向当前结点，prev作为cur前一个结点，使cur指向ptr，即改变了next方向。</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">ListNode* <span class="title">reverseList</span><span class="params">(ListNode* head)</span> </span>&#123;</span><br><span class="line">        <span class="comment">//cur初始化为头节点，prev初始为空指针</span></span><br><span class="line">        <span class="comment">//反转后头结点变成尾结点，next==NULL，这是合理的，说明初始化正确。</span></span><br><span class="line">        ListNode* cur=head;</span><br><span class="line">        ListNode* prev=<span class="literal">NULL</span>;</span><br><span class="line">        <span class="comment">//当cur为空指针时，说明已经反转完成</span></span><br><span class="line">        <span class="keyword">while</span>(cur)&#123;</span><br><span class="line">            <span class="comment">//用temp记录cur-&gt;next后再反转cur的next方向,否则会丢失后续链表的地址</span></span><br><span class="line">            ListNode* temp=cur-&gt;next;</span><br><span class="line">            <span class="comment">//改变next方向</span></span><br><span class="line">            cur-&gt;next=prev;</span><br><span class="line">            <span class="comment">//先移动prev再移动cur。</span></span><br><span class="line">            <span class="comment">//否则，prev与cur（已移动）中间结点的地址是丢失的，无法移动prev</span></span><br><span class="line">            prev=cur;</span><br><span class="line">            cur=temp;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//cur为空指针时，prev指向反转链表的头结点</span></span><br><span class="line">        <span class="keyword">return</span> prev;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h2 id="递归"><a href="#递归" class="headerlink" title="递归"></a>递归</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//递归</span></span><br><span class="line"><span class="comment">//思路与双指针完全相同，代码可以对照双指针法代码进行实现</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">ListNode* <span class="title">reverse</span><span class="params">(ListNode* prev,ListNode* cur)</span></span>&#123;</span><br><span class="line">        <span class="comment">//cur为空指针时，返回prev</span></span><br><span class="line">        <span class="keyword">if</span>(cur==<span class="literal">NULL</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> prev;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//定义temp；改变next方向</span></span><br><span class="line">        ListNode* temp=cur-&gt;next;</span><br><span class="line">        cur-&gt;next=prev;</span><br><span class="line">        <span class="comment">//这时我们对一处结点的反转已经完成，接下来使用递归，让函数处理下一处结点</span></span><br><span class="line">        <span class="comment">//那么下一处结点的prev为cur，cur为temp</span></span><br><span class="line">        <span class="comment">//我们发现，这其实与双指针法别无二样。</span></span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">reverse</span>(cur,temp);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function">ListNode* <span class="title">reverseList</span><span class="params">(ListNode* head)</span> </span>&#123;</span><br><span class="line">        <span class="comment">//返回reverse函数的返回值</span></span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">reverse</span>(<span class="literal">NULL</span>,head);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h2 id="头插法"><a href="#头插法" class="headerlink" title="头插法"></a>头插法</h2><p>使用虚拟头节点，将链表从头到尾一个一个的查到虚拟头节点的后面。我们发现，最早插入的结点出现在链表的最后，最晚插入的结点出现在链表的开头。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">ListNode* <span class="title">reverseList</span><span class="params">(ListNode* head)</span> </span>&#123;</span><br><span class="line">        ListNode* dummyHead=<span class="keyword">new</span> ListNode;</span><br><span class="line">        dummyHead-&gt;next=<span class="literal">NULL</span>;</span><br><span class="line">        ListNode* cur=head;</span><br><span class="line">        <span class="keyword">while</span>(cur)&#123;</span><br><span class="line">            <span class="comment">//同样的，定义temp</span></span><br><span class="line">            ListNode* temp=cur-&gt;next;</span><br><span class="line">            <span class="comment">//cur插入到虚拟头节点和真实头节点之间</span></span><br><span class="line">            cur-&gt;next=dummyHead-&gt;next;</span><br><span class="line">            dummyHead-&gt;next=cur;</span><br><span class="line">            <span class="comment">//cur后移</span></span><br><span class="line">            cur=temp;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//返回真实的头节点</span></span><br><span class="line">        <span class="keyword">return</span> dummyHead-&gt;next;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/08/13/%E9%93%BE%E8%A1%A8%E2%80%94%E2%80%94%E8%AE%BE%E8%AE%A1%E9%93%BE%E8%A1%A8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/apple-touch-icon-next.png">
+      <meta itemprop="name" content="KKKKKKARA">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Blog by KKKKKKARA">
+      <meta itemprop="description" content="靡不有初，鲜克有终。">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Blog by KKKKKKARA">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2023/08/13/%E9%93%BE%E8%A1%A8%E2%80%94%E2%80%94%E8%AE%BE%E8%AE%A1%E9%93%BE%E8%A1%A8/" class="post-title-link" itemprop="url">链表——设计链表</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">نُشر في</span>
+      
+
+      <time title="أُنشأ: 2023-08-13 19:16:50 / عُدل: 19:43:44" itemprop="dateCreated datePublished" datetime="2023-08-13T19:16:50+08:00">2023-08-13</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>下面这道题目基本覆盖了链表的常见操作</p>
+<ul>
+<li>获取链表第index个节点的数值</li>
+<li>在链表的最前面插入一个节点</li>
+<li>在链表的最后面插入一个节点</li>
+<li>在链表第index个节点前面插入一个节点</li>
+<li>删除链表的第index个节点</li>
+</ul>
+<h1 id="力扣链接："><a href="#力扣链接：" class="headerlink" title="力扣链接："></a>力扣链接：</h1><div>
+https://leetcode.cn/problems/design-linked-list/description/
+</div>
+
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//单链表</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">MyLinkedList</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="comment">//先建立一个结点</span></span><br><span class="line">    <span class="keyword">struct</span> <span class="title class_">LinkedNode</span>&#123;</span><br><span class="line">        <span class="type">int</span> val;</span><br><span class="line">        LinkedNode* next;</span><br><span class="line">        <span class="built_in">LinkedNode</span>(<span class="type">int</span> val):<span class="built_in">val</span>(val),<span class="built_in">next</span>(<span class="literal">nullptr</span>)&#123;&#125;</span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="comment">//初始化链表</span></span><br><span class="line">    <span class="built_in">MyLinkedList</span>() &#123;</span><br><span class="line">        <span class="comment">//虚拟头节点，所以size=0。</span></span><br><span class="line">        dummyHead=<span class="keyword">new</span> <span class="built_in">LinkedNode</span>(<span class="number">0</span>);</span><br><span class="line">        size=<span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//如果下标不合法，返回-1，否则返回对应数值</span></span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">get</span><span class="params">(<span class="type">int</span> index)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(index&lt;<span class="number">0</span>||index&gt;size<span class="number">-1</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//首先要注意真实结点的下标是从0开始的</span></span><br><span class="line">        <span class="comment">//所以cur初始就指向第一个真实结点</span></span><br><span class="line">        <span class="comment">//那么index=0时，循环语句不执行，cur下标为0。</span></span><br><span class="line">        <span class="comment">//index=x时，循环x次，cur下标为x</span></span><br><span class="line">        LinkedNode* cur=dummyHead-&gt;next;</span><br><span class="line">        <span class="keyword">while</span>(index--)&#123;</span><br><span class="line">            cur=cur-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> cur-&gt;val;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">addAtHead</span><span class="params">(<span class="type">int</span> val)</span> </span>&#123;</span><br><span class="line">        LinkedNode* headNode=<span class="keyword">new</span> <span class="built_in">LinkedNode</span>(val);</span><br><span class="line">        headNode-&gt;next=dummyHead-&gt;next;</span><br><span class="line">        dummyHead-&gt;next=headNode;</span><br><span class="line">        size++;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">addAtTail</span><span class="params">(<span class="type">int</span> val)</span> </span>&#123;</span><br><span class="line">        LinkedNode* tailNode=<span class="keyword">new</span> <span class="built_in">LinkedNode</span>(val);</span><br><span class="line">        LinkedNode* cur=dummyHead;</span><br><span class="line">        <span class="keyword">while</span>(cur-&gt;next!=<span class="literal">NULL</span>)&#123;</span><br><span class="line">            cur=cur-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line">        cur-&gt;next=tailNode;</span><br><span class="line">        size++;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//index&gt;size，不插入链表</span></span><br><span class="line">    <span class="comment">//index&lt;0，使其成为真实头节点</span></span><br><span class="line">    <span class="comment">//index其他值，插到index结点前</span></span><br><span class="line">    <span class="comment">//需要注意，因为是单链表，所以我们应该找到的是index-1，用(index-1)-&gt;表示index</span></span><br><span class="line">    <span class="comment">//所以cur初始指向虚拟头节点。</span></span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">addAtIndex</span><span class="params">(<span class="type">int</span> index, <span class="type">int</span> val)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(index&gt;size) <span class="keyword">return</span> ;</span><br><span class="line">        <span class="keyword">if</span>(index&lt;<span class="number">0</span>) index=<span class="number">0</span>;</span><br><span class="line">        LinkedNode* indexNode=<span class="keyword">new</span> <span class="built_in">LinkedNode</span>(val);</span><br><span class="line">        LinkedNode* cur=dummyHead;</span><br><span class="line">        <span class="keyword">while</span>(index--)&#123;</span><br><span class="line">            cur=cur-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line">        indexNode-&gt;next=cur-&gt;next;</span><br><span class="line">        cur-&gt;next=indexNode;</span><br><span class="line">        size++;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//如果index不合法，则不执行。</span></span><br><span class="line">    <span class="comment">//因为是单链表，所以我们应该找到的是index-1。</span></span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">deleteAtIndex</span><span class="params">(<span class="type">int</span> index)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(index&gt;=size||index&lt;<span class="number">0</span>) <span class="keyword">return</span> ;</span><br><span class="line">        LinkedNode* cur=dummyHead;</span><br><span class="line">        <span class="keyword">while</span>(index--)&#123;</span><br><span class="line">            cur=cur-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line">        LinkedNode* temp=cur-&gt;next;</span><br><span class="line">        cur-&gt;next=cur-&gt;next-&gt;next;</span><br><span class="line">        <span class="keyword">delete</span> temp;</span><br><span class="line">        <span class="comment">//delete temp后释放了temp指向的内存，但temp本身还存在</span></span><br><span class="line">        <span class="comment">//为了避免temp成为野指针，将它赋值NULL</span></span><br><span class="line">        temp=<span class="literal">nullptr</span>;</span><br><span class="line">        size--;</span><br><span class="line">    &#125;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="type">int</span> size;</span><br><span class="line">    LinkedNode* dummyHead;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/08/13/%E9%93%BE%E8%A1%A8%E2%80%94%E2%80%94%E7%A7%BB%E9%99%A4%E9%93%BE%E8%A1%A8%E5%85%83%E7%B4%A0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/apple-touch-icon-next.png">
+      <meta itemprop="name" content="KKKKKKARA">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Blog by KKKKKKARA">
+      <meta itemprop="description" content="靡不有初，鲜克有终。">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Blog by KKKKKKARA">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2023/08/13/%E9%93%BE%E8%A1%A8%E2%80%94%E2%80%94%E7%A7%BB%E9%99%A4%E9%93%BE%E8%A1%A8%E5%85%83%E7%B4%A0/" class="post-title-link" itemprop="url">链表——移除链表元素</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">نُشر في</span>
+      
+
+      <time title="أُنشأ: 2023-08-13 15:41:54 / عُدل: 16:24:55" itemprop="dateCreated datePublished" datetime="2023-08-13T15:41:54+08:00">2023-08-13</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>移除链表有两种方式：</p>
+<p>1.直接使用原来的链表进行删除操作。</p>
+<p>2.设置一个虚拟头节点进行删除操作。</p>
+<h1 id="力扣题目链接："><a href="#力扣题目链接：" class="headerlink" title="力扣题目链接："></a>力扣题目链接：</h1><div>
+https://leetcode.cn/problems/remove-linked-list-elements/
+</div>
+
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for singly-linked list.</span></span><br><span class="line"><span class="comment"> * struct ListNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     ListNode *next;</span></span><br><span class="line"><span class="comment"> *     ListNode() : val(0), next(nullptr) &#123;&#125;</span></span><br><span class="line"><span class="comment"> *     ListNode(int x) : val(x), next(nullptr) &#123;&#125;</span></span><br><span class="line"><span class="comment"> *     ListNode(int x, ListNode *next) : val(x), next(next) &#123;&#125;</span></span><br><span class="line"><span class="comment"> &#125;;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="comment">//1.直接使用原来的链表进行删除操作</span></span><br><span class="line"><span class="comment">//删除操作要分为头节点和非头节点</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">ListNode* <span class="title">removeElements</span><span class="params">(ListNode* head, <span class="type">int</span> val)</span> </span>&#123;</span><br><span class="line">        <span class="comment">//判断是否为空指针，避免对空指针进行操作！</span></span><br><span class="line">        <span class="keyword">while</span>(head!=<span class="literal">NULL</span>&amp;&amp;head-&gt;val==val)&#123;</span><br><span class="line">            <span class="comment">//定义temp记录即将被删除的结点，用于后续从内存中删除该结点</span></span><br><span class="line">            ListNode* temp=head;</span><br><span class="line">            head=head-&gt;next;</span><br><span class="line">            <span class="keyword">delete</span> temp;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//定义一个指针进行遍历</span></span><br><span class="line">        ListNode* cur=head;</span><br><span class="line">        <span class="comment">//判断是否为空指针，避免对空指针进行操作！</span></span><br><span class="line">        <span class="keyword">while</span>(cur!=<span class="literal">NULL</span>&amp;&amp;cur-&gt;next!=<span class="literal">NULL</span>)&#123;</span><br><span class="line">            <span class="keyword">if</span>(cur-&gt;next-&gt;val==val)&#123;</span><br><span class="line">                ListNode* temp=cur-&gt;next;</span><br><span class="line">                cur-&gt;next=cur-&gt;next-&gt;next;</span><br><span class="line">                <span class="keyword">delete</span> temp;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span>&#123;</span><br><span class="line">                cur=cur-&gt;next;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> head;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>我们可以发现如果“直接使用原来的链表进行删除操作”，我们需要单独对头节点进行处理，这就导致了我们对链表的删除操作并不那么统一、范式。所以我们使用“设置虚拟头节点”的方式进行链表的删除操作。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for singly-linked list.</span></span><br><span class="line"><span class="comment"> * struct ListNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     ListNode *next;</span></span><br><span class="line"><span class="comment"> *     ListNode() : val(0), next(nullptr) &#123;&#125;</span></span><br><span class="line"><span class="comment"> *     ListNode(int x) : val(x), next(nullptr) &#123;&#125;</span></span><br><span class="line"><span class="comment"> *     ListNode(int x, ListNode *next) : val(x), next(next) &#123;&#125;</span></span><br><span class="line"><span class="comment"> * &#125;;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="comment">//2.设置虚拟头指针对链表进行删除操作</span></span><br><span class="line"><span class="comment">//通过设置虚拟头指针，使得头指针head失去其特殊地位（不再是头指针）,从而相同删除代码。</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">ListNode* <span class="title">removeElements</span><span class="params">(ListNode* head, <span class="type">int</span> val)</span> </span>&#123;</span><br><span class="line">        ListNode* dummyHead=<span class="keyword">new</span> ListNode;</span><br><span class="line">        dummyHead-&gt;next=head;</span><br><span class="line">        ListNode* cur=dummyHead;</span><br><span class="line">        <span class="keyword">while</span>(cur!=<span class="literal">NULL</span>&amp;&amp;cur-&gt;next!=<span class="literal">NULL</span>)&#123;</span><br><span class="line">            <span class="keyword">if</span>(cur-&gt;next-&gt;val==val)&#123;</span><br><span class="line">                ListNode* temp=cur-&gt;next;</span><br><span class="line">                cur-&gt;next=cur-&gt;next-&gt;next;</span><br><span class="line">                <span class="keyword">delete</span> temp;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span>&#123;</span><br><span class="line">                cur=cur-&gt;next;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//需要注意：dummHead-&gt;next才是真正的头指针！</span></span><br><span class="line">        <span class="keyword">return</span> dummyHead-&gt;next;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 

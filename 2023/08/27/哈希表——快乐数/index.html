@@ -19,27 +19,27 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.18.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"بحث...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="set与multiset底层实现是红黑树，unordered_set的底层实现是哈希表， 使用unordered_set 读写效率是最快的，不需要对数据排序，并且不允许重复，所以选择unordered_set。 力扣题目链接： https:&#x2F;&#x2F;leetcode.cn&#x2F;problems&#x2F;intersection-of-two-arrays&#x2F;   123456789101112131415161718">
+    <meta name="description" content="我们发现题目中非常关键的一个词语——“无限循环”。当陷入无限循环时，这个数不是“快乐数”，返回false。那么怎么判断是否陷入了无限循环呢？ 每进行一个求和操作，进行判断：如果sum&#x3D;1，返回true。如果sum!&#x3D;1，判断这个sum是否出现过，出现过说明已经踏入了无限循环，返回false；如果没有出现过，用set记录sum。 最后n&#x3D;sum，进入下一轮循环 力扣题目">
 <meta property="og:type" content="article">
-<meta property="og:title" content="哈希表——两个数组的交集">
-<meta property="og:url" content="http://example.com/2023/08/25/%E5%93%88%E5%B8%8C%E8%A1%A8%E2%80%94%E2%80%94%E4%B8%A4%E4%B8%AA%E6%95%B0%E7%BB%84%E7%9A%84%E4%BA%A4%E9%9B%86/index.html">
+<meta property="og:title" content="哈希表——快乐数">
+<meta property="og:url" content="http://example.com/2023/08/27/%E5%93%88%E5%B8%8C%E8%A1%A8%E2%80%94%E2%80%94%E5%BF%AB%E4%B9%90%E6%95%B0/index.html">
 <meta property="og:site_name" content="Blog by KKKKKKARA">
-<meta property="og:description" content="set与multiset底层实现是红黑树，unordered_set的底层实现是哈希表， 使用unordered_set 读写效率是最快的，不需要对数据排序，并且不允许重复，所以选择unordered_set。 力扣题目链接： https:&#x2F;&#x2F;leetcode.cn&#x2F;problems&#x2F;intersection-of-two-arrays&#x2F;   123456789101112131415161718">
+<meta property="og:description" content="我们发现题目中非常关键的一个词语——“无限循环”。当陷入无限循环时，这个数不是“快乐数”，返回false。那么怎么判断是否陷入了无限循环呢？ 每进行一个求和操作，进行判断：如果sum&#x3D;1，返回true。如果sum!&#x3D;1，判断这个sum是否出现过，出现过说明已经踏入了无限循环，返回false；如果没有出现过，用set记录sum。 最后n&#x3D;sum，进入下一轮循环 力扣题目">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2023-08-25T02:07:56.000Z">
-<meta property="article:modified_time" content="2023-08-26T23:59:35.056Z">
+<meta property="article:published_time" content="2023-08-27T00:01:20.000Z">
+<meta property="article:modified_time" content="2023-08-27T00:40:37.711Z">
 <meta property="article:author" content="KKKKKKARA">
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="http://example.com/2023/08/25/%E5%93%88%E5%B8%8C%E8%A1%A8%E2%80%94%E2%80%94%E4%B8%A4%E4%B8%AA%E6%95%B0%E7%BB%84%E7%9A%84%E4%BA%A4%E9%9B%86/">
+<link rel="canonical" href="http://example.com/2023/08/27/%E5%93%88%E5%B8%8C%E8%A1%A8%E2%80%94%E2%80%94%E5%BF%AB%E4%B9%90%E6%95%B0/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh_CN","comments":true,"permalink":"http://example.com/2023/08/25/%E5%93%88%E5%B8%8C%E8%A1%A8%E2%80%94%E2%80%94%E4%B8%A4%E4%B8%AA%E6%95%B0%E7%BB%84%E7%9A%84%E4%BA%A4%E9%9B%86/","path":"2023/08/25/哈希表——两个数组的交集/","title":"哈希表——两个数组的交集"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh_CN","comments":true,"permalink":"http://example.com/2023/08/27/%E5%93%88%E5%B8%8C%E8%A1%A8%E2%80%94%E2%80%94%E5%BF%AB%E4%B9%90%E6%95%B0/","path":"2023/08/27/哈希表——快乐数/","title":"哈希表——快乐数"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>哈希表——两个数组的交集 | Blog by KKKKKKARA</title>
+<title>哈希表——快乐数 | Blog by KKKKKKARA</title>
   
 
 
@@ -155,7 +155,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh_CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2023/08/25/%E5%93%88%E5%B8%8C%E8%A1%A8%E2%80%94%E2%80%94%E4%B8%A4%E4%B8%AA%E6%95%B0%E7%BB%84%E7%9A%84%E4%BA%A4%E9%9B%86/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/08/27/%E5%93%88%E5%B8%8C%E8%A1%A8%E2%80%94%E2%80%94%E5%BF%AB%E4%B9%90%E6%95%B0/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/apple-touch-icon-next.png">
@@ -168,12 +168,12 @@
     </span>
 
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="哈希表——两个数组的交集 | Blog by KKKKKKARA">
+      <meta itemprop="name" content="哈希表——快乐数 | Blog by KKKKKKARA">
       <meta itemprop="description" content="">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          哈希表——两个数组的交集
+          哈希表——快乐数
         </h1>
 
         <div class="post-meta-container">
@@ -183,15 +183,9 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">نُشر في</span>
+      
 
-      <time title="أُنشأ: 2023-08-25 10:07:56" itemprop="dateCreated datePublished" datetime="2023-08-25T10:07:56+08:00">2023-08-25</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">عُدل في</span>
-      <time title="عُدل: 2023-08-27 07:59:35" itemprop="dateModified" datetime="2023-08-27T07:59:35+08:00">2023-08-27</time>
+      <time title="أُنشأ: 2023-08-27 08:01:20 / عُدل: 08:40:37" itemprop="dateCreated datePublished" datetime="2023-08-27T08:01:20+08:00">2023-08-27</time>
     </span>
 
   
@@ -203,14 +197,14 @@
     
     
     
-    <div class="post-body" itemprop="articleBody"><p>set与multiset底层实现是红黑树，unordered_set的底层实现是哈希表， 使用unordered_set 读写效率是最快的，不需要对数据排序，并且不允许重复，所以选择unordered_set。</p>
+    <div class="post-body" itemprop="articleBody"><p>我们发现题目中非常关键的一个词语——“无限循环”。当陷入无限循环时，这个数不是“快乐数”，返回false。那么怎么判断是否陷入了无限循环呢？</p>
+<p>每进行一个求和操作，进行判断：如果sum&#x3D;1，返回true。如果sum!&#x3D;1，判断这个sum是否出现过，出现过说明已经踏入了无限循环，返回false；如果没有出现过，用set记录sum。</p>
+<p>最后n&#x3D;sum，进入下一轮循环</p>
 <h1 id="力扣题目链接："><a href="#力扣题目链接：" class="headerlink" title="力扣题目链接："></a>力扣题目链接：</h1><div>
-https://leetcode.cn/problems/intersection-of-two-arrays/
+https://leetcode.cn/problems/happy-number/
 </div>
 
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//数组</span></span><br><span class="line"><span class="comment">//相较于数组，set占用空间更大，速度更慢。</span></span><br><span class="line"><span class="comment">//set把value映射到key上都要进行哈希计算。</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">intersection</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; nums1, vector&lt;<span class="type">int</span>&gt;&amp; nums2)</span> </span>&#123;</span><br><span class="line">        <span class="type">int</span> hash_arr[<span class="number">1001</span>]=&#123;<span class="number">0</span>&#125;;</span><br><span class="line">        unordered_set &lt;<span class="type">int</span>&gt; result;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;nums1.<span class="built_in">size</span>();++i)&#123;</span><br><span class="line">            hash_arr[nums1[i]]=<span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;nums2.<span class="built_in">size</span>();++i)&#123;</span><br><span class="line">            <span class="keyword">if</span>(hash_arr[nums2[i]])&#123;</span><br><span class="line">                result.<span class="built_in">insert</span>(nums2[i]);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">vector</span>&lt;<span class="type">int</span>&gt;(result.<span class="built_in">begin</span>(),result.<span class="built_in">end</span>());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//unorder_set——无序、去重。</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">intersection</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; nums1, vector&lt;<span class="type">int</span>&gt;&amp; nums2)</span> </span>&#123;</span><br><span class="line">        unordered_set&lt;<span class="type">int</span>&gt; result;</span><br><span class="line">        <span class="function">unordered_set&lt;<span class="type">int</span>&gt; <span class="title">nums</span><span class="params">(nums1.begin(),nums1.end())</span></span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;nums2.<span class="built_in">size</span>();++i)&#123;</span><br><span class="line">            <span class="keyword">if</span>(nums.<span class="built_in">find</span>(nums2[i])!=nums.<span class="built_in">end</span>())&#123;</span><br><span class="line">                result.<span class="built_in">insert</span>(nums2[i]);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">vector</span>&lt;<span class="type">int</span>&gt;(result.<span class="built_in">begin</span>(),result.<span class="built_in">end</span>());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">getsum</span><span class="params">(<span class="type">int</span> n)</span></span>&#123;</span><br><span class="line">        <span class="type">int</span> sum=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span>(n)&#123;</span><br><span class="line">            sum+=(n%<span class="number">10</span>)*(n%<span class="number">10</span>);</span><br><span class="line">            n/=<span class="number">10</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> sum;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="type">bool</span> <span class="title">isHappy</span><span class="params">(<span class="type">int</span> n)</span> </span>&#123;</span><br><span class="line">        unordered_set&lt;<span class="type">int</span>&gt; set;</span><br><span class="line">        <span class="keyword">while</span>(<span class="literal">true</span>)&#123;</span><br><span class="line">            <span class="type">int</span> sum=<span class="built_in">getsum</span>(n);</span><br><span class="line">            <span class="keyword">if</span>(sum==<span class="number">1</span>)&#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(set.<span class="built_in">find</span>(sum)!=set.<span class="built_in">end</span>())&#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span>&#123;</span><br><span class="line">                set.<span class="built_in">insert</span>(sum);</span><br><span class="line">            &#125;</span><br><span class="line">            n=sum;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
     </div>
 
@@ -224,13 +218,13 @@ https://leetcode.cn/problems/intersection-of-two-arrays/
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/2023/08/25/%E5%93%88%E5%B8%8C%E8%A1%A8%E2%80%94%E2%80%94%E6%9C%89%E6%95%88%E7%9A%84%E5%AD%97%E6%AF%8D%E5%BC%82%E4%BD%8D%E8%AF%8D/" rel="prev" title="哈希表——有效的字母异位词">
-                  <i class="fa fa-angle-left"></i> 哈希表——有效的字母异位词
+                <a href="/2023/08/25/%E5%93%88%E5%B8%8C%E8%A1%A8%E2%80%94%E2%80%94%E4%B8%A4%E4%B8%AA%E6%95%B0%E7%BB%84%E7%9A%84%E4%BA%A4%E9%9B%86/" rel="prev" title="哈希表——两个数组的交集">
+                  <i class="fa fa-angle-left"></i> 哈希表——两个数组的交集
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/2023/08/27/%E5%93%88%E5%B8%8C%E8%A1%A8%E2%80%94%E2%80%94%E5%BF%AB%E4%B9%90%E6%95%B0/" rel="next" title="哈希表——快乐数">
-                  哈希表——快乐数 <i class="fa fa-angle-right"></i>
+                <a href="/2023/08/27/%E5%93%88%E5%B8%8C%E8%A1%A8%E2%80%94%E2%80%94%E4%B8%A4%E6%95%B0%E4%B9%8B%E5%92%8C/" rel="next" title="哈希表——两数之和">
+                  哈希表——两数之和 <i class="fa fa-angle-right"></i>
                 </a>
             </div>
           </div>
