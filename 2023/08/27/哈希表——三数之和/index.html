@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="zh_CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic%7CLobster+Two:300,300italic,400,400italic,700,700italic%7CAmita:300,300italic,400,400italic,700,700italic%7CMontserrat:300,300italic,400,400italic,700,700italic%7CPT+Mono:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha256-HtsXJanqjKTc8vVQjO4YMhiqFoXkfBsjBWcX91T1jr8=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.18.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"بحث...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="力扣题目链接： https:&#x2F;&#x2F;leetcode.cn&#x2F;problems&#x2F;3sum&#x2F;   这道题目的关键与难点在于“去重”。 最初始的思路： 用二维动态数组result存放三元组，三重循环遍历数组查找三元组。 改善思路：双指针法——减少时间复杂度。一层for循环遍历数组nums，对于每个元素nums[i]，我们都对其后的所有元素进行查找符合条件的二元组。 完善思路：先将数组排序。如果nums[i]">
+<meta property="og:type" content="article">
+<meta property="og:title" content="哈希表——三数之和">
+<meta property="og:url" content="http://example.com/2023/08/27/%E5%93%88%E5%B8%8C%E8%A1%A8%E2%80%94%E2%80%94%E4%B8%89%E6%95%B0%E4%B9%8B%E5%92%8C/index.html">
+<meta property="og:site_name" content="Blog by KKKKKKARA">
+<meta property="og:description" content="力扣题目链接： https:&#x2F;&#x2F;leetcode.cn&#x2F;problems&#x2F;3sum&#x2F;   这道题目的关键与难点在于“去重”。 最初始的思路： 用二维动态数组result存放三元组，三重循环遍历数组查找三元组。 改善思路：双指针法——减少时间复杂度。一层for循环遍历数组nums，对于每个元素nums[i]，我们都对其后的所有元素进行查找符合条件的二元组。 完善思路：先将数组排序。如果nums[i]">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2023-08-27T05:01:45.000Z">
+<meta property="article:modified_time" content="2023-08-28T14:55:08.946Z">
+<meta property="article:author" content="KKKKKKARA">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://example.com/2023/08/27/%E5%93%88%E5%B8%8C%E8%A1%A8%E2%80%94%E2%80%94%E4%B8%89%E6%95%B0%E4%B9%8B%E5%92%8C/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh_CN","comments":true,"permalink":"http://example.com/2023/08/27/%E5%93%88%E5%B8%8C%E8%A1%A8%E2%80%94%E2%80%94%E4%B8%89%E6%95%B0%E4%B9%8B%E5%92%8C/","path":"2023/08/27/哈希表——三数之和/","title":"哈希表——三数之和"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>哈希表——三数之和 | Blog by KKKKKKARA</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="تشغيل شريط التصفح" role="button">
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Blog by KKKKKKARA</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="بحث" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          المحتويات
+        </li>
+        <li class="sidebar-nav-overview">
+          عام
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8A%9B%E6%89%A3%E9%A2%98%E7%9B%AE%E9%93%BE%E6%8E%A5%EF%BC%9A"><span class="nav-number">1.</span> <span class="nav-text">力扣题目链接：</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9C%80%E5%88%9D%E5%A7%8B%E7%9A%84%E6%80%9D%E8%B7%AF%EF%BC%9A"><span class="nav-number">1.1.</span> <span class="nav-text">最初始的思路：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%94%B9%E5%96%84%E6%80%9D%E8%B7%AF%EF%BC%9A"><span class="nav-number">1.2.</span> <span class="nav-text">改善思路：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%8C%E5%96%84%E6%80%9D%E8%B7%AF%EF%BC%9A"><span class="nav-number">1.3.</span> <span class="nav-text">完善思路：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0%E7%BB%86%E8%8A%82%E2%80%94%E2%80%94%E5%8E%BB%E9%87%8D%E6%80%9D%E8%B7%AF%EF%BC%9A"><span class="nav-number">1.4.</span> <span class="nav-text">代码实现细节——去重思路：</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="KKKKKKARA"
+      src="/images/apple-touch-icon-next.png">
+  <p class="site-author-name" itemprop="name">KKKKKKARA</p>
+  <div class="site-description" itemprop="description">靡不有初，鲜克有终。</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">22</span>
+          <span class="site-state-item-name">المقالات</span>
+        </a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/KKKKKKARA" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;KKKKKKARA" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:k3500322737@163.com" title="E-Mail → mailto:k3500322737@163.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh_CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/08/27/%E5%93%88%E5%B8%8C%E8%A1%A8%E2%80%94%E2%80%94%E4%B8%89%E6%95%B0%E4%B9%8B%E5%92%8C/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/apple-touch-icon-next.png">
+      <meta itemprop="name" content="KKKKKKARA">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Blog by KKKKKKARA">
+      <meta itemprop="description" content="靡不有初，鲜克有终。">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="哈希表——三数之和 | Blog by KKKKKKARA">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          哈希表——三数之和
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">نُشر في</span>
+
+      <time title="أُنشأ: 2023-08-27 13:01:45" itemprop="dateCreated datePublished" datetime="2023-08-27T13:01:45+08:00">2023-08-27</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">عُدل في</span>
+      <time title="عُدل: 2023-08-28 22:55:08" itemprop="dateModified" datetime="2023-08-28T22:55:08+08:00">2023-08-28</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h1 id="力扣题目链接："><a href="#力扣题目链接：" class="headerlink" title="力扣题目链接："></a>力扣题目链接：</h1><div>
+https://leetcode.cn/problems/3sum/
+</div>
+
+<p><strong>这道题目的关键与难点在于“去重”。</strong></p>
+<h2 id="最初始的思路："><a href="#最初始的思路：" class="headerlink" title="最初始的思路："></a>最初始的思路：</h2><p> 用二维动态数组result存放三元组，三重循环遍历数组查找三元组。</p>
+<h2 id="改善思路："><a href="#改善思路：" class="headerlink" title="改善思路："></a>改善思路：</h2><p>双指针法——减少时间复杂度。一层for循环遍历数组nums，对于每个元素nums[i]，我们都对其后的所有元素进行查找符合条件的二元组。</p>
+<h2 id="完善思路："><a href="#完善思路：" class="headerlink" title="完善思路："></a>完善思路：</h2><p>先将数组排序。如果nums[i]&gt;0，那么直接return result即可，因为nums[i]&gt;0，代表其后的所有元素都大于0，不可能出现符合条件的三元组，那么我们直接返回在此之前存放在result中的三元组即可。这时代码的整体思路已经解决了，但其中的细节，同时最重要的操作——“去重”亟待解决。</p>
+<h2 id="代码实现细节——去重思路："><a href="#代码实现细节——去重思路：" class="headerlink" title="代码实现细节——去重思路："></a>代码实现细节——去重思路：</h2><p>我们先对三元组中的第一个元素进行去重操作，其对应的是nums[i]。如果nums[i]在i之前出现过，也就是nums[i]&#x3D;&#x3D;nums[i-1]，那么nums[i]这个数值我们应当不再进行配对。因为循环到i-1时，我们已经将nums[i-1]这个数值配对完毕，所以nums[i]我们不再配对。由于我们需要对i-1这个下标进行操作，所以我们需要判断i是否大于0。</p>
+<p>那么我们为什么不能判断if(nusm[i]&#x3D;&#x3D;nums[i+1])呢？我们需要注意，去重操作去除的是什么。去重操作去除的是三元组中元素相同的三元组（{-1,0,1},{-1,0,1}这两个三元组是相同的，我们要去除一个三元组），而不是三元组内元素相同的三元组（{0,0,0}这个三元组内的元素是相同的，但没有与这个三元组元素相同的三元组，我们不需要去除）。如果判断nums[i]&#x3D;&#x3D;nums[i+1]，我们会发现这种判断会导致上述的第二种情况，这不是我们想要的。</p>
+<p>我们再对三元组中的第二个元素和第三个元素也就是nums[left]和nums[right]进行去重。当我们找到一个符合的三元组时（需要注意，当我们找到一个三元组后，再进行去重），我们判断while(nums[left]&#x3D;&#x3D;nums[left+1])，如果相等，letf++直到下一个下标将出现数值更易的情况。同样的，我们判断while(nums[right]&#x3D;&#x3D;nums[right–])，如果相等，right–直到下一个下标将出现数值更易的情况。当去重操作结束后，此时nums[i]配对的一个三元组已经完毕，我们令left++，right–。</p>
+<p>最后返回result。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    vector&lt;vector&lt;<span class="type">int</span>&gt;&gt; <span class="built_in">threeSum</span>(vector&lt;<span class="type">int</span>&gt;&amp; nums) &#123;</span><br><span class="line">        vector&lt;vector&lt;<span class="type">int</span>&gt;&gt; result;</span><br><span class="line">        <span class="built_in">sort</span>(nums.<span class="built_in">begin</span>(),nums.<span class="built_in">end</span>());</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;nums.<span class="built_in">size</span>();++i)&#123;</span><br><span class="line">            <span class="keyword">if</span>(nums[i]&gt;<span class="number">0</span>)&#123;</span><br><span class="line">                <span class="keyword">return</span> result;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(i&gt;<span class="number">0</span>&amp;&amp;nums[i]==nums[i<span class="number">-1</span>])&#123;</span><br><span class="line">                <span class="keyword">continue</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="type">int</span> left=i+<span class="number">1</span>;</span><br><span class="line">            <span class="type">int</span> right=nums.<span class="built_in">size</span>()<span class="number">-1</span>;</span><br><span class="line">            <span class="keyword">while</span>(left&lt;right)&#123;</span><br><span class="line">                <span class="keyword">if</span>(nums[i]+nums[left]+nums[right]&gt;<span class="number">0</span>)&#123;</span><br><span class="line">                    --right;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">else</span> <span class="keyword">if</span>(nums[i]+nums[left]+nums[right]&lt;<span class="number">0</span>)&#123;</span><br><span class="line">                    ++left;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">else</span>&#123;</span><br><span class="line">                    result.<span class="built_in">push_back</span>(vector&lt;<span class="type">int</span>&gt;&#123;nums[i],nums[left],nums[right]&#125;);</span><br><span class="line">                    <span class="keyword">while</span>(left&lt;right&amp;&amp;nums[left]==nums[left+<span class="number">1</span>])&#123;</span><br><span class="line">                        ++left;</span><br><span class="line">                    &#125;</span><br><span class="line">                    <span class="keyword">while</span>(left&lt;right&amp;&amp;nums[right]==nums[right<span class="number">-1</span>])&#123;</span><br><span class="line">                        --right;</span><br><span class="line">                    &#125;</span><br><span class="line">                    ++left;</span><br><span class="line">                    --right;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2023/08/27/%E2%80%98%E5%93%88%E5%B8%8C%E8%A1%A8%E2%80%94%E2%80%94%E8%B5%8E%E9%87%91%E4%BF%A1%E2%80%99/" rel="prev" title="‘哈希表——赎金信’">
+                  <i class="fa fa-angle-left"></i> ‘哈希表——赎金信’
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2023</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">KKKKKKARA</span>
+  </div>
+  <div class="powered-by">تطبيق الموقع <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>

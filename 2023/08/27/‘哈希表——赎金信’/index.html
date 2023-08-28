@@ -19,27 +19,27 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.18.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"بحث...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="力扣题目链接： https:&#x2F;&#x2F;leetcode.cn&#x2F;problems&#x2F;intersection-of-two-linked-lists-lcci&#x2F;   12345678910111213141516171819202122232425262728293031323334353637383940414243444546&#x2F;** * Definition for singly-linked list">
+    <meta name="description" content="使用数组hash记录magazine中的字母出现次数——0-25对应a-z。再遍历ransomNote对对应字母下标的元素进行自减操作，每进行一次自减操作，判断hash[i]是否小于0，如果小于0，返回false，否则继续循环。如果循环结束没有返回false，则返回true。 力扣题目链接： https:&#x2F;&#x2F;leetcode.cn&#x2F;problems&#x2F;ransom-note&#x2F;   123456789">
 <meta property="og:type" content="article">
-<meta property="og:title" content="链表——链表相交">
-<meta property="og:url" content="http://example.com/2023/08/15/%E9%93%BE%E8%A1%A8%E2%80%94%E2%80%94%E9%93%BE%E8%A1%A8%E7%9B%B8%E4%BA%A4/index.html">
+<meta property="og:title" content="‘哈希表——赎金信’">
+<meta property="og:url" content="http://example.com/2023/08/27/%E2%80%98%E5%93%88%E5%B8%8C%E8%A1%A8%E2%80%94%E2%80%94%E8%B5%8E%E9%87%91%E4%BF%A1%E2%80%99/index.html">
 <meta property="og:site_name" content="Blog by KKKKKKARA">
-<meta property="og:description" content="力扣题目链接： https:&#x2F;&#x2F;leetcode.cn&#x2F;problems&#x2F;intersection-of-two-linked-lists-lcci&#x2F;   12345678910111213141516171819202122232425262728293031323334353637383940414243444546&#x2F;** * Definition for singly-linked list">
+<meta property="og:description" content="使用数组hash记录magazine中的字母出现次数——0-25对应a-z。再遍历ransomNote对对应字母下标的元素进行自减操作，每进行一次自减操作，判断hash[i]是否小于0，如果小于0，返回false，否则继续循环。如果循环结束没有返回false，则返回true。 力扣题目链接： https:&#x2F;&#x2F;leetcode.cn&#x2F;problems&#x2F;ransom-note&#x2F;   123456789">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2023-08-15T11:42:52.000Z">
-<meta property="article:modified_time" content="2023-08-16T13:37:53.440Z">
+<meta property="article:published_time" content="2023-08-27T04:43:04.000Z">
+<meta property="article:modified_time" content="2023-08-28T02:07:47.205Z">
 <meta property="article:author" content="KKKKKKARA">
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="http://example.com/2023/08/15/%E9%93%BE%E8%A1%A8%E2%80%94%E2%80%94%E9%93%BE%E8%A1%A8%E7%9B%B8%E4%BA%A4/">
+<link rel="canonical" href="http://example.com/2023/08/27/%E2%80%98%E5%93%88%E5%B8%8C%E8%A1%A8%E2%80%94%E2%80%94%E8%B5%8E%E9%87%91%E4%BF%A1%E2%80%99/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh_CN","comments":true,"permalink":"http://example.com/2023/08/15/%E9%93%BE%E8%A1%A8%E2%80%94%E2%80%94%E9%93%BE%E8%A1%A8%E7%9B%B8%E4%BA%A4/","path":"2023/08/15/链表——链表相交/","title":"链表——链表相交"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh_CN","comments":true,"permalink":"http://example.com/2023/08/27/%E2%80%98%E5%93%88%E5%B8%8C%E8%A1%A8%E2%80%94%E2%80%94%E8%B5%8E%E9%87%91%E4%BF%A1%E2%80%99/","path":"2023/08/27/‘哈希表——赎金信’/","title":"‘哈希表——赎金信’"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>链表——链表相交 | Blog by KKKKKKARA</title>
+<title>‘哈希表——赎金信’ | Blog by KKKKKKARA</title>
   
 
 
@@ -155,7 +155,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh_CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2023/08/15/%E9%93%BE%E8%A1%A8%E2%80%94%E2%80%94%E9%93%BE%E8%A1%A8%E7%9B%B8%E4%BA%A4/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/08/27/%E2%80%98%E5%93%88%E5%B8%8C%E8%A1%A8%E2%80%94%E2%80%94%E8%B5%8E%E9%87%91%E4%BF%A1%E2%80%99/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/apple-touch-icon-next.png">
@@ -168,12 +168,12 @@
     </span>
 
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="链表——链表相交 | Blog by KKKKKKARA">
+      <meta itemprop="name" content="‘哈希表——赎金信’ | Blog by KKKKKKARA">
       <meta itemprop="description" content="">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          链表——链表相交
+          ‘哈希表——赎金信’
         </h1>
 
         <div class="post-meta-container">
@@ -184,14 +184,14 @@
       </span>
       <span class="post-meta-item-text">نُشر في</span>
 
-      <time title="أُنشأ: 2023-08-15 19:42:52" itemprop="dateCreated datePublished" datetime="2023-08-15T19:42:52+08:00">2023-08-15</time>
+      <time title="أُنشأ: 2023-08-27 12:43:04" itemprop="dateCreated datePublished" datetime="2023-08-27T12:43:04+08:00">2023-08-27</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">عُدل في</span>
-      <time title="عُدل: 2023-08-16 21:37:53" itemprop="dateModified" datetime="2023-08-16T21:37:53+08:00">2023-08-16</time>
+      <time title="عُدل: 2023-08-28 10:07:47" itemprop="dateModified" datetime="2023-08-28T10:07:47+08:00">2023-08-28</time>
     </span>
 
   
@@ -203,11 +203,12 @@
     
     
     
-    <div class="post-body" itemprop="articleBody"><h1 id="力扣题目链接："><a href="#力扣题目链接：" class="headerlink" title="力扣题目链接："></a>力扣题目链接：</h1><div>
-https://leetcode.cn/problems/intersection-of-two-linked-lists-lcci/
+    <div class="post-body" itemprop="articleBody"><p>使用数组hash记录magazine中的字母出现次数——0-25对应a-z。再遍历ransomNote对对应字母下标的元素进行自减操作，每进行一次自减操作，判断hash[i]是否小于0，如果小于0，返回false，否则继续循环。如果循环结束没有返回false，则返回true。</p>
+<h1 id="力扣题目链接："><a href="#力扣题目链接：" class="headerlink" title="力扣题目链接："></a>力扣题目链接：</h1><div>
+https://leetcode.cn/problems/ransom-note/
 </div>
 
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for singly-linked list.</span></span><br><span class="line"><span class="comment"> * struct ListNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     ListNode *next;</span></span><br><span class="line"><span class="comment"> *     ListNode(int x) : val(x), next(NULL) &#123;&#125;</span></span><br><span class="line"><span class="comment"> * &#125;;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="comment">//先遍历链表得到链表长度。</span></span><br><span class="line"><span class="comment">//再让两个链表末尾对齐，也就是长链表的指针先走sizeA-sizeB次</span></span><br><span class="line"><span class="comment">//然后遍历后续链表寻找交点。</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">ListNode *<span class="title">getIntersectionNode</span><span class="params">(ListNode *headA, ListNode *headB)</span> </span>&#123;</span><br><span class="line">      ListNode* curA=headA;</span><br><span class="line">      ListNode* curB=headB;</span><br><span class="line">      <span class="type">int</span> sizeA=<span class="number">0</span>;</span><br><span class="line">      <span class="type">int</span> sizeB=<span class="number">0</span>;</span><br><span class="line">      <span class="keyword">while</span>(curA)&#123;</span><br><span class="line">          sizeA++;</span><br><span class="line">          curA=curA-&gt;next;</span><br><span class="line">      &#125;  </span><br><span class="line">      <span class="keyword">while</span>(curB)&#123;</span><br><span class="line">          sizeB++;</span><br><span class="line">          curB=curB-&gt;next;</span><br><span class="line">      &#125;</span><br><span class="line">      curA=headA;</span><br><span class="line">      curB=headB;</span><br><span class="line">      <span class="keyword">if</span>(sizeB&gt;sizeA)&#123;</span><br><span class="line">          <span class="built_in">swap</span>(curA,curB);</span><br><span class="line">          <span class="built_in">swap</span>(sizeA,sizeB);</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="type">int</span> gap=sizeA-sizeB;</span><br><span class="line">      <span class="keyword">while</span>(gap--)&#123;</span><br><span class="line">          curA=curA-&gt;next;</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">while</span>(curA)&#123;</span><br><span class="line">          <span class="keyword">if</span>(curA==curB)&#123;</span><br><span class="line">              <span class="keyword">return</span> curA;</span><br><span class="line">          &#125;</span><br><span class="line">          curA=curA-&gt;next;</span><br><span class="line">          curB=curB-&gt;next;</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">return</span> <span class="literal">NULL</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">bool</span> <span class="title">canConstruct</span><span class="params">(string ransomNote, string magazine)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(ransomNote.<span class="built_in">size</span>()&gt;magazine.<span class="built_in">size</span>())&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="type">int</span> hash[<span class="number">26</span>]=&#123;<span class="number">0</span>&#125;;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;magazine.<span class="built_in">size</span>();++i)&#123;</span><br><span class="line">            ++hash[magazine[i]-<span class="string">&#x27;a&#x27;</span>];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;ransomNote.<span class="built_in">size</span>();++i)&#123;</span><br><span class="line">            --hash[ransomNote[i]-<span class="string">&#x27;a&#x27;</span>];</span><br><span class="line">            <span class="keyword">if</span>(hash[ransomNote[i]-<span class="string">&#x27;a&#x27;</span>]&lt;<span class="number">0</span>)&#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
     </div>
 
@@ -221,13 +222,13 @@ https://leetcode.cn/problems/intersection-of-two-linked-lists-lcci/
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/2023/08/15/%E9%93%BE%E8%A1%A8%E2%80%94%E2%80%94%E5%88%A0%E9%99%A4%E9%93%BE%E8%A1%A8%E7%9A%84%E5%80%92%E6%95%B0%E7%AC%ACN%E4%B8%AA%E7%BB%93%E7%82%B9/" rel="prev" title="链表——删除链表的倒数第N个结点">
-                  <i class="fa fa-angle-left"></i> 链表——删除链表的倒数第N个结点
+                <a href="/2023/08/27/%E5%93%88%E5%B8%8C%E8%A1%A8%E2%80%94%E2%80%94%E5%9B%9B%E6%95%B0%E7%9B%B8%E5%8A%A0/" rel="prev" title="哈希表——四数相加">
+                  <i class="fa fa-angle-left"></i> 哈希表——四数相加
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/2023/08/16/%E9%93%BE%E8%A1%A8%E2%80%94%E2%80%94%E7%8E%AF%E5%BD%A2%E9%93%BE%E8%A1%A8/" rel="next" title="链表——环形链表">
-                  链表——环形链表 <i class="fa fa-angle-right"></i>
+                <a href="/2023/08/27/%E5%93%88%E5%B8%8C%E8%A1%A8%E2%80%94%E2%80%94%E4%B8%89%E6%95%B0%E4%B9%8B%E5%92%8C/" rel="next" title="哈希表——三数之和">
+                  哈希表——三数之和 <i class="fa fa-angle-right"></i>
                 </a>
             </div>
           </div>
