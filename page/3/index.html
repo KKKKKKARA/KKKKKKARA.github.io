@@ -116,7 +116,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">22</span>
+          <span class="site-state-item-count">23</span>
           <span class="site-state-item-name">المقالات</span>
         </a>
       </div>
@@ -142,6 +142,85 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/08/06/%E6%95%B0%E7%BB%84%E2%80%94%E2%80%94%E7%A7%BB%E9%99%A4%E5%85%83%E7%B4%A0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/apple-touch-icon-next.png">
+      <meta itemprop="name" content="KKKKKKARA">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Blog by KKKKKKARA">
+      <meta itemprop="description" content="靡不有初，鲜克有终。">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Blog by KKKKKKARA">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2023/08/06/%E6%95%B0%E7%BB%84%E2%80%94%E2%80%94%E7%A7%BB%E9%99%A4%E5%85%83%E7%B4%A0/" class="post-title-link" itemprop="url">数组——移除元素</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">نُشر في</span>
+      
+
+      <time title="أُنشأ: 2023-08-06 10:16:35 / عُدل: 11:51:28" itemprop="dateCreated datePublished" datetime="2023-08-06T10:16:35+08:00">2023-08-06</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="移除元素"><a href="#移除元素" class="headerlink" title="移除元素"></a>移除元素</h1><p>由于数组元素在内存中的地址是连续的，所以“删除”元素实质上是“覆盖”元素。</p>
+<h2 id="力扣题目链接："><a href="#力扣题目链接：" class="headerlink" title="力扣题目链接："></a>力扣题目链接：</h2><div>
+https://leetcode.cn/problems/remove-element/
+</div>
+
+<h3 id="解法一（暴力法）"><a href="#解法一（暴力法）" class="headerlink" title="解法一（暴力法）"></a>解法一（暴力法）</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//两层for循环，第一层循环:寻找val,第二层循环:把val后的元素依次前移，覆盖val。</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">removeElement</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; nums, <span class="type">int</span> val)</span> </span>&#123;</span><br><span class="line">        <span class="type">int</span> size=nums.<span class="built_in">size</span>();<span class="comment">//定义size:记录新数组长度，初始值为旧数组长度。</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;size;i++)&#123;</span><br><span class="line">            <span class="comment">//寻找到val</span></span><br><span class="line">            <span class="keyword">if</span>(nums[i]==val)&#123;</span><br><span class="line">                <span class="comment">//将i后的元素依次前移。</span></span><br><span class="line">                <span class="keyword">for</span>(<span class="type">int</span> j=i+<span class="number">1</span>;j&lt;size;j++)&#123;</span><br><span class="line">                    nums[j<span class="number">-1</span>]=nums[j];</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="comment">//由于元素前移，原nums[i]被覆盖，所以现nums[i]未知，需要重新遍历。</span></span><br><span class="line">                i--;</span><br><span class="line">                <span class="comment">//每寻找到一次val，进行一次覆盖，数组长度减一</span></span><br><span class="line">                size--;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> size;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h3 id="解法二（快慢指针）"><a href="#解法二（快慢指针）" class="headerlink" title="解法二（快慢指针）"></a>解法二（快慢指针）</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">fastIndex用于寻找新数组元素（非目标值），slowIndex用于指向更新新数组时的下标位置。</span></span><br><span class="line"><span class="comment">每当fastIndex找到一个新数组元素，就更新slowIndex处.</span></span><br><span class="line"><span class="comment">同时slowIndex++，移向下一个更新位置。</span></span><br><span class="line"><span class="comment">这个方法没有改变元素的相对位置。</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">removeElement</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; nums, <span class="type">int</span> val)</span> </span>&#123;</span><br><span class="line">        <span class="type">int</span> slowIndex=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> fastIndex=<span class="number">0</span>;fastIndex&lt;nums.<span class="built_in">size</span>();fastIndex++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(nums[fastIndex]!=val)&#123;</span><br><span class="line">                nums[slowIndex++]=nums[fastIndex];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> slowIndex;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h2 id="解法三（相向指针）"><a href="#解法三（相向指针）" class="headerlink" title="解法三（相向指针）"></a>解法三（相向指针）</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">相向指针，顾名思义，两个相向的指针。</span></span><br><span class="line"><span class="comment">leftIndex右移，寻找val；rightIndex左移，寻找非val，然后更新数组。</span></span><br><span class="line"><span class="comment">一次循环中，leftIndex寻找到一个更新新数组的位置，rightIndex寻找到一个新数组元素</span></span><br><span class="line"><span class="comment">最后leftIndex指向的肯定是新数组最后一个位置+1，所以返回leftIndex。</span></span><br><span class="line"><span class="comment">需要注意的是，这个方法改变了数组元素的相对位置，但确保了移动最少元素。</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">removeElement</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; nums, <span class="type">int</span> val)</span> </span>&#123;</span><br><span class="line">        <span class="type">int</span> leftIndex=<span class="number">0</span>;</span><br><span class="line">        <span class="type">int</span> rightIndex=nums.<span class="built_in">size</span>()<span class="number">-1</span>;</span><br><span class="line">        <span class="keyword">while</span>(leftIndex&lt;=rightIndex)&#123;</span><br><span class="line">            <span class="keyword">while</span>(leftIndex&lt;=rightIndex&amp;&amp;nums[leftIndex]!=val)&#123;</span><br><span class="line">                leftIndex++;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">while</span>(leftIndex&lt;=rightIndex&amp;&amp;nums[rightIndex]==val)&#123;</span><br><span class="line">                rightIndex--;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(leftIndex&lt;rightIndex)&#123;</span><br><span class="line">                nums[leftIndex++]=nums[rightIndex--];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> leftIndex;</span><br><span class="line">    &#125;    </span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
