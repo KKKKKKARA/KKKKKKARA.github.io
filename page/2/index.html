@@ -116,7 +116,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">23</span>
+          <span class="site-state-item-count">24</span>
           <span class="site-state-item-name">المقالات</span>
         </a>
       </div>
@@ -142,6 +142,104 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/08/16/%E9%93%BE%E8%A1%A8%E2%80%94%E2%80%94%E7%8E%AF%E5%BD%A2%E9%93%BE%E8%A1%A8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/apple-touch-icon-next.png">
+      <meta itemprop="name" content="KKKKKKARA">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Blog by KKKKKKARA">
+      <meta itemprop="description" content="靡不有初，鲜克有终。">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Blog by KKKKKKARA">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2023/08/16/%E9%93%BE%E8%A1%A8%E2%80%94%E2%80%94%E7%8E%AF%E5%BD%A2%E9%93%BE%E8%A1%A8/" class="post-title-link" itemprop="url">链表——环形链表</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">نُشر في</span>
+
+      <time title="أُنشأ: 2023-08-16 22:03:53" itemprop="dateCreated datePublished" datetime="2023-08-16T22:03:53+08:00">2023-08-16</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">عُدل في</span>
+      <time title="عُدل: 2023-08-17 14:35:55" itemprop="dateModified" datetime="2023-08-17T14:35:55+08:00">2023-08-17</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="力扣题目链接："><a href="#力扣题目链接：" class="headerlink" title="力扣题目链接："></a>力扣题目链接：</h1><div>
+https://leetcode.cn/problems/linked-list-cycle-ii/
+</div>
+
+<h1 id="如何判断是否有环？"><a href="#如何判断是否有环？" class="headerlink" title="如何判断是否有环？"></a>如何判断是否有环？</h1><p>可以使用双指针——定义一个快指针，一个慢指针，如果快慢指针相遇，则有环。</p>
+<p>指针在环内相遇的问题类似于在圆形轨迹的追逐问题。但令人疑虑的是：由于快慢指针的移动是以“格”的方式，与跑步这种连续的移动方式不同，快慢指针是否会擦肩而过并且巧合地一直错过。</p>
+<p>实际上，将slow移动设置为1格，fast移动设置为2格，那么在环内，fast将相对于slow以1格的速度追逐slow。这时，快慢指针是不会错过的。</p>
+<p>值得一提的是，快慢指针必定在slow移动一圈前相遇。因为即使slow进入环时（考虑极限情况）（设环的大小为size）1.快慢指针的距离恰好是最大的距离（size-1）。2.size极大，足以忽略快慢指针移动速度的大小。在slow移动（size-1）时，fast移动了2(size-1)，快慢指针相遇。简单的讲，slow移动一圈，fast移动两圈，移动距离的差距一定大于初始的距离。</p>
+<p>判断是否有环已经解决了，那么如何找到环的入口呢？</p>
+<h1 id="如何找到环的入口？"><a href="#如何找到环的入口？" class="headerlink" title="如何找到环的入口？"></a>如何找到环的入口？</h1><p>如果有环，怎么找到环的入口呢？</p>
+<p>我们在链表上标记三个结点：头结点、环结点（环的入口）、相遇结点。</p>
+<p>令距离（头结点，环结点）&#x3D;x;</p>
+<p>令距离（环结点，相遇结点）&#x3D;y;</p>
+<p>令距离（相遇结点，环结点）&#x3D;z;</p>
+<p>slow的移动距离为x+y;（上面已经解释了为什么slow移动距离不会超过一圈）</p>
+<p>fast的移动距离为x+y+n(y+z);（其中n(y+z)表示在slow进入环前fast循环了n圈，n&gt;&#x3D;1）</p>
+<p>由于fast速度为slow速度的两倍，那么它们的距离也是两倍的关系。</p>
+<p>2(x+y)&#x3D;x+y+n(y+z);</p>
+<p>x+y&#x3D;n(y+z);（我们要求x，那么将x单独放在等式的一边）</p>
+<p>x&#x3D;n(y+z)-y;（其实此时我们可以隐约地察觉到，在这个等式里存在一个循环的、不变的东西，那就是(y+z)，那么其中变化的东西(-y)就决定了x的值。不过(-y)并不方便我们观察。）</p>
+<p>x&#x3D;(n-1)(y+z)+z;（如果n&#x3D;1，x&#x3D;z，也就是说，定义一个指针headIndex在头节点，一个指针meetIndex在相遇结点，两者以相同速度出发，它们一定在环结点处相遇；如果n&gt;1，那么两个指针同样会在环结点相遇，不过meetIndex会围绕环循环几圈后才与headIndex相遇。）</p>
+<p>现在我们解决了如何找到环入口的问题——在头节点与相遇结点定义两个指针，令它们以相同速度同时出发，相遇时的结点就是环入口。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for singly-linked list.</span></span><br><span class="line"><span class="comment"> * struct ListNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     ListNode *next;</span></span><br><span class="line"><span class="comment"> *     ListNode(int x) : val(x), next(NULL) &#123;&#125;</span></span><br><span class="line"><span class="comment"> * &#125;;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">ListNode *<span class="title">detectCycle</span><span class="params">(ListNode *head)</span> </span>&#123;</span><br><span class="line">        ListNode* fast=head;</span><br><span class="line">        ListNode* slow=head;</span><br><span class="line">        <span class="keyword">while</span>(fast!=<span class="literal">NULL</span>&amp;&amp;fast-&gt;next!=<span class="literal">NULL</span>)&#123;</span><br><span class="line">            slow=slow-&gt;next;</span><br><span class="line">            fast=fast-&gt;next-&gt;next;</span><br><span class="line">            <span class="keyword">if</span>(slow==fast)&#123;</span><br><span class="line">                ListNode* headIndex=head;</span><br><span class="line">                ListNode* meetIndex=fast;</span><br><span class="line">                <span class="keyword">while</span>(headIndex!=meetIndex)&#123;</span><br><span class="line">                    headIndex=headIndex-&gt;next;</span><br><span class="line">                    meetIndex=meetIndex-&gt;next;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">return</span> headIndex;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">NULL</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -924,84 +1022,6 @@ https://leetcode.cn/problems/minimum-size-subarray-sum/
 <h2 id="解法一（暴力法）"><a href="#解法一（暴力法）" class="headerlink" title="解法一（暴力法）"></a>解法一（暴力法）</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//力扣不通过，超时。</span></span><br><span class="line"><span class="comment">//两层for循环不断寻找符合条件的子数组，最后返回最小长度。</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">minSubArrayLen</span><span class="params">(<span class="type">int</span> target, vector&lt;<span class="type">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">        <span class="type">int</span> result=INT32_MAX;<span class="comment">//INT32_MAX为整型上限，=2^31-1.</span></span><br><span class="line">        <span class="type">int</span> sum=<span class="number">0</span>;</span><br><span class="line">        <span class="type">int</span> subLength=<span class="number">0</span>;</span><br><span class="line">        <span class="comment">//i指向初始位置，j指向结束位置，用两层for循环不断寻找符合条件的子数组</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;nums.<span class="built_in">size</span>();i++)&#123;</span><br><span class="line">            sum=<span class="number">0</span>;<span class="comment">//每开始新的一个初始位置，sum便要清零</span></span><br><span class="line">            <span class="keyword">for</span>(<span class="type">int</span> j=i;i&lt;nums.<span class="built_in">size</span>();j++)&#123;</span><br><span class="line">                sum+=nums[j];</span><br><span class="line">                <span class="comment">//区间符合，得subLength，result=min(result,subLength)，break</span></span><br><span class="line">                <span class="keyword">if</span>(sum&gt;=target)&#123;</span><br><span class="line">                    subLength=j-i+<span class="number">1</span>;</span><br><span class="line">                    result=result&lt;subLength?result:subLength;</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//返回result。result没有改变则返回0，否则result最终值。</span></span><br><span class="line">        <span class="keyword">return</span> result==INT32_MAX?<span class="number">0</span>:result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">//想要得到min，可将min定义为INT_MAX</span></span><br><span class="line"><span class="comment">//想要得到max，可将max定义为INT_MINS</span></span><br></pre></td></tr></table></figure>
 
 <h2 id="解法二（滑动窗口）"><a href="#解法二（滑动窗口）" class="headerlink" title="解法二（滑动窗口）"></a>解法二（滑动窗口）</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">滑动窗口就是不断调整子数组的初始位置和结束位置</span></span><br><span class="line"><span class="comment">在暴力解法中，一个for循环调整滑动窗口的初始位置，一个for循环调整滑动窗口的结束位置。</span></span><br><span class="line"><span class="comment">那么滑动窗口怎么用一个for循环完成呢？for(int j=0;j&lt;nums.size();j++)</span></span><br><span class="line"><span class="comment">j指向的是初始位置还是结束位置？</span></span><br><span class="line"><span class="comment">如果是初始位置，我们发现剩下的结束位置亟待遍历，那解法又回到了暴力解法。</span></span><br><span class="line"><span class="comment">所以j指向结束位置，那么初始位置如何移动呢？</span></span><br><span class="line"><span class="comment">当j移动到某下标时，子数组符合条件，记录subLenth，result=min(result,subLength)</span></span><br><span class="line"><span class="comment">然后移动窗口初始位置，尝试缩小窗口并将其缩小至最小。</span></span><br><span class="line"><span class="comment">上述操作完成后，j继续后移，待窗口符合条件后继续尝试缩小窗口，直至遍历nums数组。</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">minSubArrayLen</span><span class="params">(<span class="type">int</span> target, vector&lt;<span class="type">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">        <span class="comment">//想求min，便将min定义为INT_MAX</span></span><br><span class="line">        <span class="type">int</span> result=INT32_MAX;</span><br><span class="line">        <span class="type">int</span> subLength=<span class="number">0</span>;</span><br><span class="line">        <span class="type">int</span> sum=<span class="number">0</span>;</span><br><span class="line">        <span class="comment">//窗口初始位置的初始值为0</span></span><br><span class="line">        <span class="type">int</span> i=<span class="number">0</span>;</span><br><span class="line">        <span class="comment">//窗口结束位置的初始值为0</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> j=<span class="number">0</span>;j&lt;nums.<span class="built_in">size</span>();j++)&#123;</span><br><span class="line">            <span class="comment">//记录窗口中元素的和</span></span><br><span class="line">            sum+=nums[j];</span><br><span class="line">            <span class="comment">//当窗口符合条件后，先记录subLength，再判断result的取值</span></span><br><span class="line">            <span class="comment">//然后尝试缩小窗口并缩小至最小（这就是使用while而非if的原因）</span></span><br><span class="line">            <span class="comment">//nums=&#123;1,1,1,10&#125;，target=10，我们发现在缩小窗口时需要缩小多次。</span></span><br><span class="line">            <span class="keyword">while</span>(sum&gt;=target)&#123;</span><br><span class="line">                subLength=(j-i+<span class="number">1</span>);</span><br><span class="line">                result=result&lt;subLength?result:subLength;</span><br><span class="line">                sum-=nums[i++];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//</span></span><br><span class="line">        <span class="keyword">return</span> result==INT32_MAX?<span class="number">0</span>:result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2023/08/07/%E6%95%B0%E7%BB%84%E2%80%94%E2%80%94%E6%9C%89%E5%BA%8F%E6%95%B0%E7%BB%84%E7%9A%84%E5%B9%B3%E6%96%B9/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/apple-touch-icon-next.png">
-      <meta itemprop="name" content="KKKKKKARA">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Blog by KKKKKKARA">
-      <meta itemprop="description" content="靡不有初，鲜克有终。">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | Blog by KKKKKKARA">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2023/08/07/%E6%95%B0%E7%BB%84%E2%80%94%E2%80%94%E6%9C%89%E5%BA%8F%E6%95%B0%E7%BB%84%E7%9A%84%E5%B9%B3%E6%96%B9/" class="post-title-link" itemprop="url">数组——有序数组的平方</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">نُشر في</span>
-      
-
-      <time title="أُنشأ: 2023-08-07 08:41:38 / عُدل: 09:20:59" itemprop="dateCreated datePublished" datetime="2023-08-07T08:41:38+08:00">2023-08-07</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="有序数组的平方"><a href="#有序数组的平方" class="headerlink" title="有序数组的平方"></a>有序数组的平方</h1><h2 id="力扣题目链接："><a href="#力扣题目链接：" class="headerlink" title="力扣题目链接："></a>力扣题目链接：</h2><div>
-https://leetcode.cn/problems/squares-of-a-sorted-array/
-</div>
-
-<h2 id="解法一（暴力法）"><a href="#解法一（暴力法）" class="headerlink" title="解法一（暴力法）"></a>解法一（暴力法）</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//最朴实无华的思路——平方+快排</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">sortedSquares</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">        <span class="comment">//遍历数组，每个元素平方</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;nums.<span class="built_in">size</span>();i++)&#123;</span><br><span class="line">            nums[i]*=nums[i];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//STL库函数</span></span><br><span class="line">        <span class="built_in">sort</span>(nums.<span class="built_in">begin</span>(),nums.<span class="built_in">end</span>());</span><br><span class="line">        <span class="keyword">return</span> nums;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<h2 id="解法二（双指针）"><a href="#解法二（双指针）" class="headerlink" title="解法二（双指针）"></a>解法二（双指针）</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//nums数组是有序的，不过由于负数的存在使得平方后元素的大小不确定</span></span><br><span class="line"><span class="comment">//所以平方后的最大值在nums数组两端，最小值在nums数组中间</span></span><br><span class="line"><span class="comment">//建立新数组result，k指向填充元素的位置，初始值为result数组末端</span></span><br><span class="line"><span class="comment">//两个指针分别指向nums数组的头和尾，判断对应元素平方的大小，大的值填入result数组</span></span><br><span class="line"><span class="comment">//同时k指向下一个位置（k--），双指针中对应元素平方大的指针指向下一个位置（i++或j--）</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">sortedSquares</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">        <span class="type">int</span> k=nums.<span class="built_in">size</span>()<span class="number">-1</span>;</span><br><span class="line">        <span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">result</span><span class="params">(nums.size(),<span class="number">0</span>)</span></span>;</span><br><span class="line">        <span class="comment">//判断条件：i&lt;=j。因为要处理最后的一个元素</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>,j=nums.<span class="built_in">size</span>()<span class="number">-1</span>;i&lt;=j;)&#123;</span><br><span class="line">            <span class="keyword">if</span>(nums[i]*nums[i]&lt;nums[j]*nums[j])&#123;</span><br><span class="line">                result[k--]=nums[j]*nums[j];</span><br><span class="line">                j--;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span>&#123;</span><br><span class="line">                result[k--]=nums[i]*nums[i];</span><br><span class="line">                i++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<p>PS: 发现自己对STL库很不熟悉，在学习数据结构与算法的同时将逐步学习STL 库。</p>
 
       
     </div>
