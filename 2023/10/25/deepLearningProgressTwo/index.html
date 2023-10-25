@@ -19,27 +19,27 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.18.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"بحث...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="暴力解法就是四重for循环，时间复杂度为O(n^4)，这不是我们想要的。我们可以这样，两层for循环遍历nums1与nums2得出所有的两两相加的值并用map存放。我们用key存放数值，value存放同一个数值出现的次数。我们再遍历nums3与nums4，在第二层的for循环中询问map有没有我们需要的值，如果有，那么count+&#x3D;value。最后返回count。 力扣题目链接： htt">
+    <meta name="description" content="靡不有初，鲜克有终。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="哈希表——四数相加">
-<meta property="og:url" content="http://example.com/2023/08/27/%E5%93%88%E5%B8%8C%E8%A1%A8%E2%80%94%E2%80%94%E5%9B%9B%E6%95%B0%E7%9B%B8%E5%8A%A0/index.html">
+<meta property="og:title" content="deepLearningProgressTwo">
+<meta property="og:url" content="http://example.com/2023/10/25/deepLearningProgressTwo/index.html">
 <meta property="og:site_name" content="Blog by KKKKKKARA">
-<meta property="og:description" content="暴力解法就是四重for循环，时间复杂度为O(n^4)，这不是我们想要的。我们可以这样，两层for循环遍历nums1与nums2得出所有的两两相加的值并用map存放。我们用key存放数值，value存放同一个数值出现的次数。我们再遍历nums3与nums4，在第二层的for循环中询问map有没有我们需要的值，如果有，那么count+&#x3D;value。最后返回count。 力扣题目链接： htt">
+<meta property="og:description" content="靡不有初，鲜克有终。">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2023-08-27T01:37:17.000Z">
-<meta property="article:modified_time" content="2023-08-27T02:17:33.373Z">
+<meta property="article:published_time" content="2023-10-25T00:03:50.000Z">
+<meta property="article:modified_time" content="2023-10-25T00:03:50.552Z">
 <meta property="article:author" content="KKKKKKARA">
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="http://example.com/2023/08/27/%E5%93%88%E5%B8%8C%E8%A1%A8%E2%80%94%E2%80%94%E5%9B%9B%E6%95%B0%E7%9B%B8%E5%8A%A0/">
+<link rel="canonical" href="http://example.com/2023/10/25/deepLearningProgressTwo/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh_CN","comments":true,"permalink":"http://example.com/2023/08/27/%E5%93%88%E5%B8%8C%E8%A1%A8%E2%80%94%E2%80%94%E5%9B%9B%E6%95%B0%E7%9B%B8%E5%8A%A0/","path":"2023/08/27/哈希表——四数相加/","title":"哈希表——四数相加"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh_CN","comments":true,"permalink":"http://example.com/2023/10/25/deepLearningProgressTwo/","path":"2023/10/25/deepLearningProgressTwo/","title":"deepLearningProgressTwo"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>哈希表——四数相加 | Blog by KKKKKKARA</title>
+<title>deepLearningProgressTwo | Blog by KKKKKKARA</title>
   
 
 
@@ -91,7 +91,7 @@
   
   <aside class="sidebar">
 
-    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+    <div class="sidebar-inner sidebar-overview-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           المحتويات
@@ -104,7 +104,6 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8A%9B%E6%89%A3%E9%A2%98%E7%9B%AE%E9%93%BE%E6%8E%A5%EF%BC%9A"><span class="nav-number">1.</span> <span class="nav-text">力扣题目链接：</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -155,7 +154,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh_CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2023/08/27/%E5%93%88%E5%B8%8C%E8%A1%A8%E2%80%94%E2%80%94%E5%9B%9B%E6%95%B0%E7%9B%B8%E5%8A%A0/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/10/25/deepLearningProgressTwo/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/apple-touch-icon-next.png">
@@ -168,12 +167,12 @@
     </span>
 
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="哈希表——四数相加 | Blog by KKKKKKARA">
+      <meta itemprop="name" content="deepLearningProgressTwo | Blog by KKKKKKARA">
       <meta itemprop="description" content="">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          哈希表——四数相加
+          deepLearningProgressTwo
         </h1>
 
         <div class="post-meta-container">
@@ -183,9 +182,8 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">نُشر في</span>
-      
 
-      <time title="أُنشأ: 2023-08-27 09:37:17 / عُدل: 10:17:33" itemprop="dateCreated datePublished" datetime="2023-08-27T09:37:17+08:00">2023-08-27</time>
+      <time title="أُنشأ: 2023-10-25 08:03:50" itemprop="dateCreated datePublished" datetime="2023-10-25T08:03:50+08:00">2023-10-25</time>
     </span>
 
   
@@ -197,13 +195,7 @@
     
     
     
-    <div class="post-body" itemprop="articleBody"><p>暴力解法就是四重for循环，时间复杂度为O(n^4)，这不是我们想要的。我们可以这样，两层for循环遍历nums1与nums2得出所有的两两相加的值并用map存放。我们用key存放数值，value存放同一个数值出现的次数。我们再遍历nums3与nums4，在第二层的for循环中询问map有没有我们需要的值，如果有，那么count+&#x3D;value。最后返回count。</p>
-<h1 id="力扣题目链接："><a href="#力扣题目链接：" class="headerlink" title="力扣题目链接："></a>力扣题目链接：</h1><div>
-https://leetcode.cn/problems/4sum-ii/
-</div>
-
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">fourSumCount</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; nums1, vector&lt;<span class="type">int</span>&gt;&amp; nums2, vector&lt;<span class="type">int</span>&gt;&amp; nums3, vector&lt;<span class="type">int</span>&gt;&amp; nums4)</span> </span>&#123;</span><br><span class="line">        unordered_map&lt;<span class="type">int</span>,<span class="type">int</span>&gt; map;</span><br><span class="line">        <span class="type">int</span> count=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> nums_1: nums1)&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="type">int</span> nums_2: nums2)&#123;</span><br><span class="line">                map[nums_1+nums_2]++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> nums_3: nums3)&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="type">int</span> nums_4: nums4)&#123;</span><br><span class="line">                <span class="keyword">if</span>(map.<span class="built_in">find</span>(<span class="number">0</span>-(nums_3+nums_4))!=map.<span class="built_in">end</span>())&#123;</span><br><span class="line">                    count+=map[<span class="number">0</span>-(nums_3+nums_4)];</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> count;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
+    <div class="post-body" itemprop="articleBody">
     </div>
 
     
@@ -216,14 +208,11 @@ https://leetcode.cn/problems/4sum-ii/
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/2023/08/27/%E5%93%88%E5%B8%8C%E8%A1%A8%E2%80%94%E2%80%94%E4%B8%A4%E6%95%B0%E4%B9%8B%E5%92%8C/" rel="prev" title="哈希表——两数之和">
-                  <i class="fa fa-angle-left"></i> 哈希表——两数之和
+                <a href="/2023/10/24/deepLearningProgressOne/" rel="prev" title="deepLearningProgressOne">
+                  <i class="fa fa-angle-left"></i> deepLearningProgressOne
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/2023/08/27/%E2%80%98%E5%93%88%E5%B8%8C%E8%A1%A8%E2%80%94%E2%80%94%E8%B5%8E%E9%87%91%E4%BF%A1%E2%80%99/" rel="next" title="‘哈希表——赎金信’">
-                  ‘哈希表——赎金信’ <i class="fa fa-angle-right"></i>
-                </a>
             </div>
           </div>
     </footer>
